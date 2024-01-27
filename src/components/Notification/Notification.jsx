@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
-class Notification extends Component {
-  render() {
-    const { message } = this.props;
-    return <p>{message}</p>;
-  }
-}
+const Notification = message => {
+  return <p>{message}</p>;
+};
 
 export { Notification };
