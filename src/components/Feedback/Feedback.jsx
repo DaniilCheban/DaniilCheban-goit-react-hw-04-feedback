@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Feedback = ({ optionss, onLeaveFeedback }) => {
+const Feedback = ({ options, onLeaveFeedback }) => {
   return (
     <div>
-      {optionss.map(option => (
+      {options.map(option => (
         <button key={option} onClick={() => onLeaveFeedback(option)}>
           {option}
         </button>

@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Feedback } from './Feedback/Feedback';
 import { Notification } from './Notification/Notification';
 import { Section } from './Section/Section';
 import { Statistics } from './Statistics/Statistics';
 
 const App = () => {
-  const [feedback, setFeedback] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  });
+  const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
 
   const handleLeaveFeedback = type => {
     setFeedback(prevFeedback => ({
@@ -29,8 +25,12 @@ const App = () => {
     return total === 0 ? 0 : Math.round((good / total) * 100);
   };
 
-  const total = countTotalFeedback();
+  const totalFeedback = countTotalFeedback();
   const positivePercentage = countPositiveFeedbackPercentage();
+
+  useEffect(() => {
+    document.title = `Feedback App - Total: ${totalFeedback}`;
+  }, [totalFeedback]);
 
   return (
     <div>
@@ -41,13 +41,13 @@ const App = () => {
         />
       </Section>
 
-      {total > 0 ? (
+      {totalFeedback > 0 ? (
         <Section title="Statistics">
           <Statistics
             good={feedback.good}
             neutral={feedback.neutral}
             bad={feedback.bad}
-            total={total}
+            total={totalFeedback}
             positivePercentage={positivePercentage}
           />
         </Section>
