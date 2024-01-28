@@ -15,8 +15,8 @@ const App = () => {
   };
 
   const countTotalFeedback = () => {
-    const { good, neutral, bad } = feedback;
-    return good + neutral + bad;
+    const { good, neutral, baad } = feedback;
+    return good + neutral + baad;
   };
 
   const countPositiveFeedbackPercentage = () => {
@@ -46,7 +46,7 @@ const App = () => {
           <Statistics
             good={feedback.good}
             neutral={feedback.neutral}
-            bad={feedback.bad}
+            bad={feedback.baad}
             total={totalFeedback}
             positivePercentage={positivePercentage}
           />
